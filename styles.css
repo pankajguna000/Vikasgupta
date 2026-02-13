@@ -595,6 +595,18 @@ p {
   align-items: center;
 }
 
+.about-intro.reverse {
+  direction: ltr;
+}
+
+.about-intro.reverse .about-intro-text {
+  order: 2;
+}
+
+.about-intro.reverse .about-image {
+  order: 1;
+}
+
 .about-intro-text .overline {
   display: inline-block;
   color: var(--accent-gold-dark);
@@ -1596,6 +1608,10 @@ p {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .img-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1603,13 +1619,37 @@ p {
   .hero h1 {
     font-size: 2.5rem;
   }
+
+  .nav a {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.82rem;
+  }
 }
 
 @media (max-width: 768px) {
   html { font-size: 15px; }
 
+  .header-top {
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+    padding: 5px 1rem;
+  }
+
   .header-main {
     padding: 0.6rem 1rem;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-text .company-name {
+    font-size: 0.95rem;
+  }
+
+  .logo-text .company-tagline {
+    font-size: 0.6rem;
   }
 
   .nav {
@@ -1622,6 +1662,8 @@ p {
     flex-direction: column;
     padding: 1rem;
     border-top: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    z-index: 999;
   }
 
   .nav.active {
@@ -1631,6 +1673,14 @@ p {
   .nav a {
     padding: 0.8rem 1rem;
     width: 100%;
+    font-size: 0.92rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .nav-cta {
+    margin-left: 0 !important;
+    margin-top: 0.5rem;
+    text-align: center;
   }
 
   .nav-toggle {
@@ -1646,9 +1696,24 @@ p {
     font-size: 2rem;
   }
 
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero-badge {
+    font-size: 0.7rem;
+    padding: 0.4rem 1.2rem;
+  }
+
   .hero-stats {
     flex-direction: column;
     gap: 1.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+  }
+
+  .hero-stat .number {
+    font-size: 2rem;
   }
 
   .page-hero {
@@ -1664,18 +1729,36 @@ p {
     gap: 2rem;
   }
 
+  /* Reset reverse order on mobile so image always comes after text */
+  .about-intro.reverse .about-intro-text,
+  .about-intro.reverse .about-image {
+    order: unset;
+  }
+
+  /* Fix inline RTL direction hack on services page for mobile */
+  .about-intro[style*="rtl"],
+  [style*="direction: rtl"] {
+    direction: ltr !important;
+  }
+
   .vision-mission {
     grid-template-columns: 1fr;
   }
 
   .founder-card {
     grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+  }
+
+  .founder-photo .placeholder-img {
+    height: 250px !important;
   }
 
   .grid-2, .grid-3, .grid-4,
   .features-grid, .value-grid,
   .reasons-grid, .philosophy-list,
-  .benefit-grid, .risk-grid {
+  .benefit-grid, .risk-grid,
+  .img-gallery {
     grid-template-columns: 1fr;
   }
 
@@ -1698,15 +1781,100 @@ p {
     padding: 4rem 0;
   }
 
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
   .container {
     padding: 0 1.2rem;
   }
 
+  /* Phase cards, authority cards, FAQ items - reduce padding */
+  .phase-card {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .authority-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .faq-item {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .highlight-box {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .highlight-box p {
+    font-size: 1rem;
+  }
+
+  /* Process timeline adjustments */
+  .process-timeline::before {
+    left: 20px;
+  }
+
+  .process-step {
+    gap: 1.2rem;
+  }
+
+  .process-step-number {
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+
+  .process-step-content {
+    padding: 1.2rem 1.5rem;
+  }
+
+  /* Flow steps */
+  .flow-step {
+    padding: 1.2rem 1.5rem;
+  }
+
+  /* Cards padding */
+  .card {
+    padding: 2rem 1.5rem;
+  }
+
+  /* CTA banner */
+  .cta-banner {
+    padding: 3.5rem 0;
+  }
+
+  .cta-banner h2 {
+    font-size: 1.7rem;
+  }
+
+  /* Contact form */
+  .contact-form {
+    padding: 2rem 1.5rem;
+  }
+
+  /* Map */
+  .map-placeholder {
+    height: 200px;
+  }
+
   h1 { font-size: 2rem; }
   h2 { font-size: 1.7rem; }
+  h3 { font-size: 1.25rem; }
 }
 
 @media (max-width: 480px) {
+  html { font-size: 14px; }
+
+  .hero {
+    min-height: auto;
+    padding: 7rem 0 3rem;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
   .hero-ctas {
     flex-direction: column;
   }
@@ -1715,11 +1883,60 @@ p {
     width: 100%;
   }
 
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.88rem;
+  }
+
   .model-tags {
     flex-direction: column;
   }
 
   .model-tag {
     text-align: center;
+  }
+
+  .logo-text .company-name {
+    font-size: 0.82rem;
+  }
+
+  .page-hero {
+    padding: 7rem 0 2.5rem;
+  }
+
+  .page-hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  .about-image .placeholder-img,
+  .about-image div {
+    height: 250px !important;
+  }
+
+  .philosophy-item {
+    padding: 1rem;
+  }
+
+  /* Risk grid items */
+  .risk-item {
+    padding: 1.2rem 1.5rem;
+  }
+
+  /* Founder photo */
+  .founder-card {
+    padding: 1.5rem;
+  }
+
+  .contact-form {
+    padding: 1.5rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 3rem 0 0;
   }
 }
